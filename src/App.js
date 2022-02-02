@@ -5,6 +5,7 @@ function App() {
   const styles = {
     background: isDark ? "#2f2f2f" : "transparent",
     color: isDark ? "white" : "black",
+    paddingTop: "1em",
   };
   return (
     <div style={styles} className="App">
