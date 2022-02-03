@@ -23,7 +23,6 @@ function App() {
     colors.map((clr) => {
       // callback function
       if (clr.theme === theme) {
-        console.log(clr.Bgcolor);
         Bgcolor = clr.Bgcolor;
         color = clr.textcolor;
       }
