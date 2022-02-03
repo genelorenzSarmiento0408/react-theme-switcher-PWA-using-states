@@ -21,5 +21,18 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "Gene Lorenz's Theme Changer in React using states, via the help of Scrimba",
+  "screenshots": [
+    {
+      "src": "/Screenshot1.png",
+      "type": "image/png",
+      "sizes": "575x623"
+    },
+    {
+      "src": "/Screenshot2.png",
+      "type": "image/jpg",
+      "sizes": "602x556"
+    }
+  ]
 }

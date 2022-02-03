@@ -6,3 +6,48 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.App {
+  display: flex;
+  padding: 5em 5em;
+  height: 80vh;
+}
+select {
+  padding-left: 1em;
+  background: transparent;
+  width: 150px;
+  appearance: none;
+  height: 2.5em;
+  border: 1px solid #111;
+  border-radius: 3px;
+  overflow: hidden;
+  background: url("../public/favicon.ico") 90% / 20% no-repeat #eee;
+}
+
+@media screen and (min-width: 300px) {
+  footer {
+    border-top: 1px solid #242010;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+}
+footer {
+  width: 100%;
+  border-top: 1px solid #242010;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  /* overflow: scroll; */
+  /* max-width: 60%; */
+  max-height: 100%;
+}
+.title {
+  flex: 1;
+  border-bottom: 1px solid rebeccapurple;
+}
