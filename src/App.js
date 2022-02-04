@@ -14,6 +14,7 @@ function App() {
     { theme: "blue", Bgcolor: "#3d57eb", textcolor: "white" },
     { theme: "yellow", Bgcolor: "#d1cb11", textcolor: "#212121" },
     { theme: "indigo", Bgcolor: "#2d0159", textcolor: "white" },
+    { theme: "green", Bgcolor: "#0f9b0f", textcolor: "white" },
   ];
 
   if (theme) {
