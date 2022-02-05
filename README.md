@@ -1,7 +1,7 @@
 # Mini Project In React: Theme Switcher
 
 This is a mini project in React. It is a simple theme switcher.
-The component use in it:
+The components use in it are:
 
 - useEffect()
 - States
