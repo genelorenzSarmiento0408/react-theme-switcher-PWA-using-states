@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import About from "./components/About";
 import Options from "./components/Options";
 
 function App() {
-  const [theme, setTheme] = useState("");
+  // ------------------------------------states------------------------------------------------------
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
+  const [themeHex, setThemeHex] = useState("");
+  const [error, setError] = useState("");
+  // check if the input is a valid hex color
+  const isHex = /#[0-9A-F]{6}/i;
 
+  function setThemeVal(event) {
+    event.preventDefault();
+    if (!themeHex.match(isHex)) {
+      setError("Not a valid hex color");
+      return;
+    }
+    setError("");
+    setTheme((prevHexTheme) => (prevHexTheme = themeHex));
+  }
   // setting the background-color
   let Bgcolor;
   let color;
@@ -17,6 +31,10 @@ function App() {
     { theme: "green", Bgcolor: "#0f9b0f", textcolor: "white" },
   ];
 
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    // every change of theme
+  }, [theme]);
   if (theme) {
     Bgcolor = theme;
     // mapping through the colors
@@ -28,6 +46,10 @@ function App() {
         color = clr.textcolor;
       }
     });
+
+    if (theme.match(/\B#(\w+)[0-5]/)) {
+      color = "white";
+    }
   }
   const styles = {
     background: Bgcolor,
@@ -38,7 +60,7 @@ function App() {
   return (
     <div style={styles} className="App">
       <div className="container">
-        <About />
+        <About color={theme} />
         <select
           onChange={(event) =>
             setTheme((prevTheme) => {
@@ -48,8 +70,32 @@ function App() {
         >
           <Options />
         </select>
+        <br />
+        <button
+          onClick={() => {
+            let random = Math.floor(Math.random() * colors.length);
+            return setTheme(colors[random].theme);
+          }}
+          className="btn btn-primary"
+        >
+          Get random Theme :D
+        </button>
+        <br />
+        Customize Color
+        <form onSubmit={setThemeVal}>
+          <input
+            type="text"
+            name="themeHex"
+            value={themeHex}
+            onChange={(event) => setThemeHex(event.target.value)}
+          ></input>
+          <br></br>
+          <button className="btn">Set theme</button>
+          <div className="error">{error}</div>
+        </form>
         <footer style={styles}>
-          <p>Made with love by Gene Lorenz</p>With the help of Scrimba
+          Made with love by Gene Lorenz <br></br>
+          <div className="small-none">With the help of Scrimba</div>
         </footer>
       </div>
     </div>
