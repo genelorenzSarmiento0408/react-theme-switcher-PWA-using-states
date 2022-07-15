@@ -25,6 +25,7 @@ function App() {
   }
   // setting the background-color
   let Bgcolor;
+  let color;
   let colors = [
     { theme: "dark", Bgcolor: "#2f2f2f", textcolor: "white" },
     { theme: "red", Bgcolor: "#a14343", textcolor: "white" },
