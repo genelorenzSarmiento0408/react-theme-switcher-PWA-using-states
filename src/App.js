@@ -7,7 +7,6 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
   const [themeHex, setThemeHex] = useState("");
   const [error, setError] = useState("");
-  const [color, setColor] = useState("");
   // check if the input is a valid hex color
   const isHex = /#[0-9A-F]{6}/i;
 
@@ -22,6 +21,7 @@ function App() {
   }
   // setting the background-color
   let Bgcolor;
+  let color;
   let colors = [
     { theme: "dark", Bgcolor: "#2f2f2f", textcolor: "white" },
     { theme: "red", Bgcolor: "#a14343", textcolor: "white" },
@@ -45,9 +45,9 @@ function App() {
     }
     isContrast().then((res) => {
       if (res === "pass") {
-        return setColor((oldColor) => (oldColor = "#151515"));
+        return (color = "#151515")
       }
-      return setColor((oldColor) => (oldColor = "#ffffff"));
+      return (color = "#ffffff")
     });
   }, [theme]);
   if (theme) {
@@ -58,7 +58,7 @@ function App() {
       // callback function
       if (clr.theme === theme) {
         Bgcolor = clr.Bgcolor;
-        setColor((oldColor) => (oldColor = clr.textcolor));
+        color = clr.textcolor 
       }
     });
   }
