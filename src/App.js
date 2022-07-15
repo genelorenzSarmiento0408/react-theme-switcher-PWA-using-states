@@ -22,6 +22,7 @@ function App() {
   // setting the background-color
   let Bgcolor;
   let color;
+  let styles;
   let colors = [
     { theme: "dark", Bgcolor: "#2f2f2f", textcolor: "white" },
     { theme: "red", Bgcolor: "#a14343", textcolor: "white" },
@@ -45,9 +46,15 @@ function App() {
     }
     isContrast().then((res) => {
       if (res === "pass") {
-        return (color = "#151515")
+        return (styles = {
+            backgroundColor: theme,
+            color: "#151515"
+        })
       }
-      return (color = "#ffffff")
+      return (styles = {
+            backgroundColor: theme,
+            color: "#ffffff"
+      })
     });
   }, [theme]);
   if (theme) {
@@ -62,7 +69,7 @@ function App() {
       }
     });
   }
-  const styles = {
+  styles = {
     background: Bgcolor,
     // if color is available then set the color
     color: color ? color : "black",
