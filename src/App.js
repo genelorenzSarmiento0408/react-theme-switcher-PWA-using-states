@@ -7,7 +7,10 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
   const [themeHex, setThemeHex] = useState("");
   const [error, setError] = useState("");
-  const [styles, setStyles] = useState({})
+  const [styles, setStyles] = useState({
+     background: "white",
+     color: "black"
+  })
   // check if the input is a valid hex color
   const isHex = /#[0-9A-F]{6}/i;
 
@@ -22,7 +25,6 @@ function App() {
   }
   // setting the background-color
   let Bgcolor;
-  let color;
   let colors = [
     { theme: "dark", Bgcolor: "#2f2f2f", textcolor: "white" },
     { theme: "red", Bgcolor: "#a14343", textcolor: "white" },
@@ -69,11 +71,11 @@ function App() {
       }
     });
   }
-  setStyles({
-    background: Bgcolor,
+  // setStyles({
+  //  background: Bgcolor,
     // if color is available then set the color
-    color: color ? color : "black",
-  })
+   // color: color ? color : "black",
+  // })
 
   return (
     <div style={styles} className="App">
@@ -119,7 +121,7 @@ function App() {
         </form>
         <footer style={styles}>
           Made with love by Gene Lorenz <br></br>
-          With the help of Scrimba
+          With the help of Scrimba and Ate <a href="https://github.com/Medic1111">Medic Pagano</a>
         </footer>
       </div>
     </div>
