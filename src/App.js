@@ -4,13 +4,10 @@ import Options from "./components/Options";
 
 function App() {
   // ------------------------------------states------------------------------------------------------
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [themeHex, setThemeHex] = useState("");
   const [error, setError] = useState("");
-  const [styles, setStyles] = useState({
-     background: "white",
-     color: "black"
-  })
+  const [styles, setStyles] = useState()
   // check if the input is a valid hex color
   const isHex = /#[0-9A-F]{6}/i;
 
@@ -122,7 +119,7 @@ function App() {
         </form>
         <footer style={styles}>
           Made with love by Gene Lorenz <br></br>
-          With the help of Scrimba and Ate <a href="https://github.com/Medic1111">Medic Pagano</a>
+          With the help of Scrimba and Ate <a href="https://github.com/Medic1111">Aryse Pagano</a>
         </footer>
       </div>
     </div>
