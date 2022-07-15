@@ -12,3 +12,11 @@
 
 - Can now customize the colors, using Hex codes
 - Can now see what the color of the color is it.
+
+## [2.0.0] - Release:
+
+- Now uses the fetch API in Javascipt to check the contrast.
+- Upgraded to React 18
+- Now uses .map() to loop through the colors, instead of hard-coding it.
+- Random color generator is now working (not just the hard coded colors) using hex codes.
+- Fixed some styles

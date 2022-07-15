@@ -7,6 +7,7 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
   const [themeHex, setThemeHex] = useState("");
   const [error, setError] = useState("");
+  const [color, setColor] = useState("");
   // check if the input is a valid hex color
   const isHex = /#[0-9A-F]{6}/i;
 
@@ -21,7 +22,6 @@ function App() {
   }
   // setting the background-color
   let Bgcolor;
-  let color;
   let colors = [
     { theme: "dark", Bgcolor: "#2f2f2f", textcolor: "white" },
     { theme: "red", Bgcolor: "#a14343", textcolor: "white" },
@@ -33,7 +33,22 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    // every change of theme
+    async function isContrast() {
+      const res = await fetch(
+        `https://webaim.org/resources/contrastchecker/?fcolor=151515&bcolor=${theme.replace(
+          "#",
+          "",
+        )}&api`,
+      );
+      const data = await res.json();
+      return data.AA;
+    }
+    isContrast().then((res) => {
+      if (res === "pass") {
+        return setColor((oldColor) => (oldColor = "#151515"));
+      }
+      return setColor((oldColor) => (oldColor = "#ffffff"));
+    });
   }, [theme]);
   if (theme) {
     Bgcolor = theme;
@@ -43,17 +58,13 @@ function App() {
       // callback function
       if (clr.theme === theme) {
         Bgcolor = clr.Bgcolor;
-        color = clr.textcolor;
+        setColor((oldColor) => (oldColor = clr.textcolor));
       }
     });
-
-    if (theme.match(/\B#(\w+)[0-5]/)) {
-      color = "white";
-    }
   }
   const styles = {
     background: Bgcolor,
-    // if color is truthy then color
+    // if color is available then set the color
     color: color ? color : "black",
   };
 
@@ -68,20 +79,26 @@ function App() {
             })
           }
         >
-          <Options />
+          <option value="">-- Choose --</option>
+          {colors.map((color) => (
+            <Options key={color.theme} color={color.theme} />
+          ))}
         </select>
         <br />
         <button
           onClick={() => {
-            let random = Math.floor(Math.random() * colors.length);
-            return setTheme(colors[random].theme);
+            // pick out a random color, in hex
+            let random =
+              "#" + (Math.random() * 0xffffff).toString(16).slice(0, 6);
+            return setTheme(random);
           }}
           className="btn btn-primary"
         >
           Get random Theme :D
         </button>
         <br />
-        Customize Color
+        Customize Color using hexadecimal code: (it would NOT work if it is not
+        a hexcode)
         <form onSubmit={setThemeVal}>
           <input
             type="text"
@@ -95,7 +112,7 @@ function App() {
         </form>
         <footer style={styles}>
           Made with love by Gene Lorenz <br></br>
-          <div className="small-none">With the help of Scrimba</div>
+          With the help of Scrimba
         </footer>
       </div>
     </div>

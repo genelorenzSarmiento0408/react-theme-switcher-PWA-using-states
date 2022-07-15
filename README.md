@@ -4,6 +4,7 @@ This is a mini project in React. It is a simple theme switcher.
 The components use in it are:
 
 - useEffect()
+- Fetch API
 - States
 - Props
 - localStorage

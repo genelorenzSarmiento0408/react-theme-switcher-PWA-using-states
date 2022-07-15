@@ -1,7 +1,7 @@
 export default function About({ color }) {
   return (
     <div>
-      <h1 className="title">Mini Project: GLS Theme Switcher</h1>
+      <h1 className="title">Mini Solo Project: GLS Theme Switcher</h1>
       <h3>The current color is: {color}</h3>
       <p>
         About the theme Switcher. Theme Switcher is created by Gene Lorenz
