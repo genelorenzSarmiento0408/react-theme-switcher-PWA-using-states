@@ -7,6 +7,7 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
   const [themeHex, setThemeHex] = useState("");
   const [error, setError] = useState("");
+  const [styles, setStyles] = useState({})
   // check if the input is a valid hex color
   const isHex = /#[0-9A-F]{6}/i;
 
@@ -22,7 +23,6 @@ function App() {
   // setting the background-color
   let Bgcolor;
   let color;
-  let styles;
   let colors = [
     { theme: "dark", Bgcolor: "#2f2f2f", textcolor: "white" },
     { theme: "red", Bgcolor: "#a14343", textcolor: "white" },
@@ -46,12 +46,12 @@ function App() {
     }
     isContrast().then((res) => {
       if (res === "pass") {
-        return (styles = {
+        return setStyles({
             backgroundColor: theme,
             color: "#151515"
         })
       }
-      return (styles = {
+      return setStyles({
             backgroundColor: theme,
             color: "#ffffff"
       })
@@ -69,11 +69,11 @@ function App() {
       }
     });
   }
-  styles = {
+  setStyles({
     background: Bgcolor,
     // if color is available then set the color
     color: color ? color : "black",
-  };
+  })
 
   return (
     <div style={styles} className="App">
