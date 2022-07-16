@@ -1,11 +1,18 @@
 body {
   margin: 0;
+  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --primary: rgb(6, 100, 207);
   --secondary: rgb(255, 255, 255);
@@ -13,8 +20,8 @@ body {
 }
 .App {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  padding: 5em 2em;
 }
 select {
   padding-left: 1em;
@@ -32,17 +39,20 @@ input {
   border-radius: 0.5em;
   border: 1px solid #111;
 }
-
-footer {
-  width: 100%;
-  border-top: 1px solid #242010;
-  color: white;
-  text-align: center;
+/* typography */
+.error {
+  color: var(--error);
 }
-
+.title {
+  flex: 1;
+  border-bottom: 1px solid rebeccapurple;
+}
+/* container */
 .container {
+  padding: 5em 2em;
   max-height: 100%;
 }
+/* buttons */
 .btn {
   background: #242010;
   color: white;
@@ -60,24 +70,23 @@ footer {
 .btn-secondary {
   background-color: var(--secondary);
 }
-.error {
-  color: var(--error);
+/* footer */
+footer {
+  border-top: 1px solid #242010;
+  width: 100%;
+  align-self: flex-end;
+  color: white;
+  text-align: center;
+  padding-bottom: 2em;
 }
-.title {
-  flex: 1;
-  border-bottom: 1px solid rebeccapurple;
-}
-
 @media screen and (min-width: 420px) {
-  .App {
+  .container {
     padding: 5em;
   }
   footer {
     border-top: 1px solid #242010;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
+    align-self: flex-end;
     color: white;
     text-align: center;
     padding-bottom: 2em;

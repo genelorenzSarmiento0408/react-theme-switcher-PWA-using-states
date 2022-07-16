@@ -9,7 +9,8 @@ export default function About({ color }) {
       </p>
       <p>
         The GLS Theme Switcher can change the theme based on how you select it
-        on the dropdown menu
+        on the dropdown menu. You van also change the theme by typing the hex
+        code inside the input field.
       </p>
       <p>Just Select it in the dropdown menu</p>
     </div>

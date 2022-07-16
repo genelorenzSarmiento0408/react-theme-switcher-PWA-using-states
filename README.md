@@ -11,6 +11,12 @@ The components use in it are:
 - Forms
 - Buttons
 
+## Features
+
+- [x] Can change the theme of the app itself, and have it a contrast
+- [ ] The app can display the different values of the hexadecimal color. (on going)
+- [ ] The app can display the representation of the color in the RGB and HSL. (on going)
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
